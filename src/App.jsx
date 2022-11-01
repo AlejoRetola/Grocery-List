@@ -7,11 +7,27 @@ function App() {
   const [data, setData] = useState([]);
   const [inputValue, setValue] = useState("");
   const [action, setAction] = useState("");
+  const [buttonChanger, setButtonChanger] = useState(0);
+  const [tracker, setTracker] = useState(0);
 
   function handleChange() {
     setValue(event.target.value);
   }
+  function handleEditButton() {
+    setButtonChanger(0);
+    setValue("");
+    let editedArray = data.map((value, index) => {
+      if (index === tracker) {
+        return (value = inputValue);
+      } else {
+        return value;
+      }
+    });
+    setData(editedArray);
+  }
+
   function handleClick() {
+    setButtonChanger(0);
     setData((prevData) => {
       return [...prevData, inputValue];
     });
@@ -34,11 +50,18 @@ function App() {
 
         <div className="flex  w-full h-7 m-auto mt-4">
           <input type="text" placeholder="e.g. eggs" className="w-10/12 h-full bg-slate-100 rounded-l pl-2 transition" onChange={handleChange} value={inputValue} />
-          <button className="w-2/12 bg-blue-300 text-black h-full rounded-r font-sans tracking-wide" onClick={handleClick}>
-            Submit
-          </button>
+
+          {buttonChanger === 0 ? (
+            <button className="w-2/12 bg-blue-300 text-black h-full rounded-r font-sans tracking-wide" onClick={handleClick}>
+              Submit
+            </button>
+          ) : (
+            <button className="w-2/12 bg-blue-300 text-black h-full rounded-r font-sans tracking-wide" onClick={handleEditButton}>
+              Edit
+            </button>
+          )}
         </div>
-        <List data={data} setData={setData} setAction={setAction} />
+        <List data={data} setData={setData} setAction={setAction} inputValue={inputValue} setValue={setValue} setButtonChanger={setButtonChanger} setTracker={setTracker} />
       </div>
     </div>
   );
