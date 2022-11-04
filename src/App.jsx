@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import List from "./List";
 import "./App.css";
+import { data } from "autoprefixer";
 
 function App() {
   const [data, setData] = useState([]);
@@ -9,6 +10,27 @@ function App() {
   const [action, setAction] = useState("");
   const [buttonChanger, setButtonChanger] = useState(0);
   const [tracker, setTracker] = useState(0);
+
+  const getLocalData = () => {
+    if (localStorage.getItem("grocerys") !== null) {
+      const unavariable = JSON.parse(localStorage.getItem("grocerys"));
+      setData(unavariable);
+    }
+  };
+
+  const setLocalData = () => {
+    if (data.length !== 0) {
+      localStorage.setItem("grocerys", JSON.stringify(data));
+    }
+  };
+
+  useEffect(() => {
+    getLocalData();
+  }, []);
+
+  useEffect(() => {
+    setLocalData();
+  }, [data]);
 
   function handleChange() {
     setValue(event.target.value);
