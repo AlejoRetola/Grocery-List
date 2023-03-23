@@ -60,7 +60,7 @@ function App() {
   }
 
   return (
-    <div className="min:w-screen min:h-screen py-4 bg-slate-100 flex justify-center items-center">
+    <div className="min-w-screen min-h-screen py-4 bg-slate-100 flex justify-center items-center">
       <div className="w-[95%] h-auto lg:w-5/12 lg:h-5/12 bg-white shadow-lg p-4 lg:p-8">
         {action.id === 1 ? (
           <div className="flex items-center justify-center text-green-400 bg-green-100">{action.text}</div>
