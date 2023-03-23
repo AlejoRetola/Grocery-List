@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import List from "./List";
-import "./App.css";
 import { data } from "autoprefixer";
 
 function App() {
@@ -61,8 +60,8 @@ function App() {
   }
 
   return (
-    <div className="w-screen h-screen bg-slate-100 flex items-center justify-center">
-      <div className="w-5/12 h-5/12 bg-white shadow-lg p-8 relative">
+    <div className="min:w-screen min:h-screen py-4 bg-slate-100 flex justify-center items-center">
+      <div className="w-[95%] h-auto lg:w-5/12 lg:h-5/12 bg-white shadow-lg p-4 lg:p-8">
         {action.id === 1 ? (
           <div className="flex items-center justify-center text-green-400 bg-green-100">{action.text}</div>
         ) : (
@@ -71,14 +70,14 @@ function App() {
         <h1 className="text-center font-sans font-bold text-3xl tracking-wider">Grocery Bud</h1>
 
         <div className="flex  w-full h-7 m-auto mt-4">
-          <input type="text" placeholder="e.g. eggs" className="w-10/12 h-full bg-slate-100 rounded-l pl-2 transition" onChange={handleChange} value={inputValue} />
+          <input type="text" placeholder="e.g. eggs" className="w-full lg:w-10/12 h-full bg-slate-100 rounded-l pl-2 transition" onChange={handleChange} value={inputValue} />
 
           {buttonChanger === 0 ? (
-            <button className="w-2/12 bg-blue-300 text-black h-full rounded-r font-sans tracking-wide" onClick={handleClick}>
+            <button className="px-2 lg:w-2/12  text-xs bg-blue-300 text-black h-full rounded-r font-sans tracking-wide" onClick={handleClick}>
               Submit
             </button>
           ) : (
-            <button className="w-2/12 bg-blue-300 text-black h-full rounded-r font-sans tracking-wide" onClick={handleEditButton}>
+            <button className="px-2 lg:w-2/12 text-xs bg-blue-300 text-black h-full rounded-r font-sans tracking-wide" onClick={handleEditButton}>
               Edit
             </button>
           )}

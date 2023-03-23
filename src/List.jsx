@@ -65,9 +65,11 @@ export default function List(info) {
         );
       })}
       {aber >= 0 ? (
-        <button className="w-full mt-8 bg-transparent text-red-400 flex items-center justify-center" onClick={deleteAll}>
-          Clear items
-        </button>
+        <div className="w-full flex justify-center">
+          <button className="px-2 mt-8 text-red-500" onClick={deleteAll}>
+            Clear items
+          </button>
+        </div>
       ) : (
         ""
       )}
