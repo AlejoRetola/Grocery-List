@@ -19,6 +19,7 @@ function App() {
 
   const setLocalData = () => {
     if (data.length !== 0) {
+      console.log("guardo esto" + data);
       localStorage.setItem("grocerys", JSON.stringify(data));
     }
   };
@@ -52,6 +53,7 @@ function App() {
     setData((prevData) => {
       return [...prevData, inputValue];
     });
+    setLocalData();
     setValue("");
     setAction({ text: "Item added", id: 1 });
     setTimeout(() => {
@@ -82,7 +84,7 @@ function App() {
             </button>
           )}
         </div>
-        <List data={data} setData={setData} setAction={setAction} inputValue={inputValue} setValue={setValue} setButtonChanger={setButtonChanger} setTracker={setTracker} />
+        <List data={data} setData={setData} setAction={setAction} inputValue={inputValue} setValue={setValue} setButtonChanger={setButtonChanger} setTracker={setTracker} setLocalData={setLocalData} />
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import { useEffect } from "react";
 export default function List(info) {
   let aber = undefined;
 
-  const { data, setData, setAction, inputValue, setValue, setButtonChanger, setTracker } = info;
+  const { data, setData, setAction, inputValue, setValue, setButtonChanger, setTracker, setLocalData } = info;
   useEffect(() => {
     setData(info.data);
   }, [info]);
@@ -15,6 +15,9 @@ export default function List(info) {
     let filteredInfo = data.filter((pedido, index) => {
       return index !== id;
     });
+    if (filteredInfo.length === 0) {
+      deleteAll();
+    }
     setData(filteredInfo);
     setAction({ text: "Item removed", id: 2 });
     setTimeout(() => {
@@ -30,6 +33,7 @@ export default function List(info) {
 
   function deleteAll() {
     setData([]);
+    localStorage.removeItem("grocerys");
     setAction({ text: "Empty list", id: 3 });
     setTimeout(() => {
       setAction("");
